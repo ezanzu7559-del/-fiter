@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrendRadar – Offline Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">
+      <span class="dot"></span>
+      <div>
+        <p class="eyebrow">Instant, offline TrendRadar</p>
+        <h1>TrendRadar</h1>
+      </div>
+    </div>
+    <div class="actions">
+      <button id="exportBtn" class="ghost">导出 JSON</button>
+      <label class="file-upload">
+        <input type="file" id="importFile" accept="application/json" />
+        <span>导入 JSON</span>
+      </label>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel radar-panel">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Radar</p>
+          <h2>Momentum · Relevance · Confidence</h2>
+        </div>
+        <div class="filters">
+          <input type="search" id="searchInput" placeholder="搜索趋势..." />
+          <select id="categoryFilter">
+            <option value="all">全部类别</option>
+          </select>
+        </div>
+      </div>
+      <div class="radar-grid">
+        <div class="canvas-wrap">
+          <canvas id="radarCanvas" width="400" height="400" aria-label="Radar visualization"></canvas>
+        </div>
+        <div class="stats" id="stats"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">当前趋势</p>
+          <h2>可编辑的趋势列表</h2>
+        </div>
+        <div class="legend">
+          <span class="legend-item hot">高动能</span>
+          <span class="legend-item warm">成长中</span>
+          <span class="legend-item cool">观察中</span>
+        </div>
+      </div>
+      <div id="cards" class="cards"></div>
+    </section>
+
+    <section class="panel form-panel">
+      <div>
+        <p class="eyebrow">添加趋势</p>
+        <h2>快速记录一条新趋势</h2>
+      </div>
+      <form id="trendForm" class="trend-form">
+        <div class="form-row">
+          <label>标题<input name="title" required /></label>
+          <label>类别<input name="category" placeholder="如 AI / Marketing" required /></label>
+          <label>阶段<input name="stage" placeholder="探索 / 试点 / 扩张" required /></label>
+        </div>
+        <div class="form-row">
+          <label>动能 (1-5)<input type="number" name="momentum" min="1" max="5" value="3" required /></label>
+          <label>相关度 (1-5)<input type="number" name="relevance" min="1" max="5" value="3" required /></label>
+          <label>信心度 (1-5)<input type="number" name="confidence" min="1" max="5" value="3" required /></label>
+        </div>
+        <label>描述<textarea name="description" rows="3" placeholder="一句话说明价值与下一步"></textarea></label>
+        <button type="submit">保存趋势</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>TrendRadar 离线演示版。数据保存在浏览器 LocalStorage 中，可随时导入/导出。</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
